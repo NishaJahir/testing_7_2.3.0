@@ -105,7 +105,6 @@ class NovalnetOrderConfirmationDataProvider
                         $comments .= PHP_EOL . $db_details['tx_status_msg'];
                     }
                     
-                    $bank_details = array_merge($db_details, json_decode($invoiceDetails, true));
                     if(in_array($db_details['payment_id'], ['40','41'])) {
                         $comments .= PHP_EOL . $paymentHelper->getTranslatedText('guarantee_text');
                         if($tid_status == '75' && $db_details['payment_id'] == '41')
@@ -124,6 +123,8 @@ class NovalnetOrderConfirmationDataProvider
                     }
                     
                     if(in_array($tid_status, ['91', '100']) && ($db_details['payment_id'] == '27' && ($transaction_details->amount > $totalCallbackAmount) || $db_details['payment_id'] == '41') ) {
+                        $bank_details = array_merge($db_details, json_decode($invoiceDetails, true));
+                        
                         $bank_details['tid_status'] = $tid_status;
                         $bank_details['invoice_account_holder'] = !empty($bank_details['invoice_account_holder']) ? $bank_details['invoice_account_holder'] : $payment_details['invoice_account_holder'];
                         $comments .= PHP_EOL . $paymentService->getInvoicePrepaymentComments($bank_details);
