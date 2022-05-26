@@ -167,12 +167,14 @@ class PaymentService
         }
         
         $additional_info = $this->additionalInfo($nnPaymentData);
+        
+        $this->getLogger(__METHOD__)->error('nnPayment', $nnPaymentData);
 
         $transactionData = [
             'amount'           => $nnPaymentData['amount'] * 100,
             'callback_amount'  => $nnPaymentData['amount'] * 100,
-            'tid'              => $nnPaymentData['tid'],
-            'ref_tid'          => $nnPaymentData['tid'],
+            'tid'              => !empty($nnPaymentData['tid']) ? $nnPaymentData['tid'] : '0',
+            'ref_tid'          => !empty($nnPaymentData['tid']) ? $nnPaymentData['tid'] : '0',
             'payment_name'     => $nnPaymentData['payment_method'],
             'order_no'         => $nnPaymentData['order_no'],
             'additional_info'      => !empty($additional_info) ? json_encode($additional_info) : '0',
@@ -1141,12 +1143,12 @@ class PaymentService
      */
     public function getSeamlessFormParams(&$paymentRequestData)
     {
-        $paymentRequestData['hfooter'] = '1';
-        $paymentRequestData['lhide'] = '1';
-        $paymentRequestData['shide'] = '1';
-        $paymentRequestData['thide'] = '1';
-        $paymentRequestData['address_form'] = '0';
-        $paymentRequestData['chosen_only'] = '1';
+        $paymentRequestData['hfooter'] = 0;
+        $paymentRequestData['lhide'] = 1;
+        $paymentRequestData['shide'] = 1;
+        $paymentRequestData['thide'] = 1;
+        $paymentRequestData['address_form'] = 0;
+        $paymentRequestData['chosen_only'] = 1;
     }
     
 }
