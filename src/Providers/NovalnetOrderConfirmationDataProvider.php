@@ -93,7 +93,9 @@ class NovalnetOrderConfirmationDataProvider
                     $db_details['payment_id'] = !empty($db_details['payment_id']) ? $db_details['payment_id'] : $payment_details['payment_id'];
                     
                     $comments = '';
-                    $comments .= PHP_EOL . $paymentHelper->getTranslatedText('nn_tid') . $db_details['tid'];
+                    if(!empty($db_details['tid'])) {
+                        $comments .= PHP_EOL . $paymentHelper->getTranslatedText('nn_tid') . $db_details['tid'];
+                    }
                     if(!empty($db_details['test_mode'])) {
                         $comments .= PHP_EOL . $paymentHelper->getTranslatedText('test_order');
                     }
