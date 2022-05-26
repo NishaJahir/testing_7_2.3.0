@@ -205,6 +205,7 @@ class PaymentHelper
         $payment->status          = (in_array($requestData['tid_status'], ['75', '85', '86', '90', '91', '98', '99']) ? Payment::STATUS_AWAITING_APPROVAL : ($requestData['type'] == 'cancel' ? Payment::STATUS_CANCELED : Payment::STATUS_CAPTURED));
         $payment->currency        = $requestData['currency'];
         $payment->amount          = $requestData['paid_amount'];
+        $payment->receivedAt      = date('Y-m-d H:i:s');
         if(isset($requestData['booking_text']) && !empty($requestData['booking_text'])) {
         $bookingText = $requestData['booking_text'];
         } else {
