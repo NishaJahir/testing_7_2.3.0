@@ -169,10 +169,10 @@ class PaymentService
         $additional_info = $this->additionalInfo($nnPaymentData);
         
         $this->getLogger(__METHOD__)->error('nnPayment', $nnPaymentData);
-
+       
         $transactionData = [
-            'amount'           => $nnPaymentData['amount'] * 100,
-            'callback_amount'  => $nnPaymentData['amount'] * 100,
+            'amount'           => ($nnPaymentData['payment_method'] == 'novalnet_applepay' && $nnPaymentData['status'] != 100) ? $nnPaymentData['amount'] : $nnPaymentData['amount'] * 100,
+            'callback_amount'  => ($nnPaymentData['payment_method'] == 'novalnet_applepay' && $nnPaymentData['status'] != 100) ? $nnPaymentData['amount'] : $nnPaymentData['amount'] * 100,
             'tid'              => !empty($nnPaymentData['tid']) ? $nnPaymentData['tid'] : '0',
             'ref_tid'          => !empty($nnPaymentData['tid']) ? $nnPaymentData['tid'] : '0',
             'payment_name'     => $nnPaymentData['payment_method'],
