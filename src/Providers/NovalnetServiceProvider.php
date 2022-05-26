@@ -498,7 +498,7 @@ class NovalnetServiceProvider extends ServiceProvider
         ) {
              
         try {
-                $bank_details = array_merge($db_details, json_decode($invoiceDetails, true));
+                
             
                 $comments = '';
                 $comments .= PHP_EOL . $paymentHelper->getTranslatedText('nn_tid') . $db_details['tid'];
@@ -506,6 +506,7 @@ class NovalnetServiceProvider extends ServiceProvider
                     $comments .= PHP_EOL . $paymentHelper->getTranslatedText('test_order');
                 }
                  if(in_array($tid_status, ['91', '100']) && ($db_details['payment_id'] == '27' && ($transaction_details->amount > $totalCallbackAmount) || $db_details['payment_id'] == '41') ) {
+                    $bank_details = array_merge($db_details, json_decode($invoiceDetails, true));
                      $bank_details['tid_status'] = $tid_status;
              $comments .= PHP_EOL . $paymentService->getInvoicePrepaymentComments($bank_details);
                 
