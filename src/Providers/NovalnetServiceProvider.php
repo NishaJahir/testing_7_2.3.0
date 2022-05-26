@@ -514,7 +514,7 @@ class NovalnetServiceProvider extends ServiceProvider
                  if($db_details['payment_id'] == '59' && ($transaction_details->amount > $totalCallbackAmount) && $tid_status == '100' ) {
                 $comments .= PHP_EOL . $cashpayment_comments;   
                 }
-                if($db_details['payment_id'] == '73' && ($transaction_details->amount > $totalCallbackAmount) && $tid_status == '100') {
+                if($db_details['payment_id'] == '73' && $tid_status == '100') {
                         $comments .= PHP_EOL . $paymentService->getMultibancoReferenceInformation($db_details);
                 }
             
