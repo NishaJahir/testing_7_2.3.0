@@ -3,6 +3,16 @@
 <script type="text/javascript">
 
   jQuery(function () {
+  
+   console.log('New Modelllll');
+   
+      var iosDevicce = iOS(); // returns true if it's iOS
+      if(iosDevicce) {
+        console.log('ios');
+      } else {
+        console.log('not ios');
+      }
+    
     jQuery("[id^='nnReinitPaymentMethod-']").show();
     
     jQuery("[id^='nnReinitPaymentMethod-']").click(function () {
@@ -24,7 +34,7 @@
           jQuery('#novalnetPaymentForm').show();
       });
     
-  });
+});
  
   var paymentMethodIds = jQuery('#nn_mop_id').val();
   document.addEventListener('historyPaymentMethodChanged', e => {
@@ -40,6 +50,21 @@
       }
     }
   });
+  
+  function iOS() {
+  return [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ].includes(navigator.platform)
+  // iPad on iOS 13 detection
+  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
+
+
 </script>
 
 
