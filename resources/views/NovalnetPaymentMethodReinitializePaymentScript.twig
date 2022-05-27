@@ -7,10 +7,12 @@
    console.log('New Modelllll');
    
       var iosDevicce = iOS(); // returns true if it's iOS
-      if(iosDevicce) {
-        console.log('ios');
+      var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      if(iosDevicce && isSafari) {
+        console.log('ios and dafari');
+        jQuery('li[data-id="6018"]').hide();
       } else {
-        console.log('not ios');
+        console.log('not ios and safari');
       }
     
     jQuery("[id^='nnReinitPaymentMethod-']").show();
