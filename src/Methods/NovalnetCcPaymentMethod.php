@@ -166,7 +166,7 @@ class NovalnetCcPaymentMethod extends PaymentMethodService
     if($orderId > 0) {
         $paymentKey = $this->paymentHelper->getOrderPaymentKey($orderId);
         $tid_status = $this->paymentHelper->getNovalnetTxStatus($orderId);
-        if( strpos($paymentKey, 'NOVALNET') !== false &&  ( (!empty($tid_status) && !in_array($tid_status, [75, 85, 86, 90, 91, 98, 99, 100, 103])) || empty($tid_status) )) {
+        if( strpos($paymentKey, 'NOVALNET') !== false &&  ( (!empty($tid_status) && !in_array($tid_status, [75, 83, 85, 86, 90, 91, 98, 99, 100, 103])) || empty($tid_status) )) {
             return true;
         }
         }
