@@ -637,13 +637,15 @@ class PaymentHelper
     public function getCashPaymentComments($requestData)
     {
         $comments =  PHP_EOL . $this->getTranslatedText('cashpayment_expire_date') . $requestData['cp_due_date'] . PHP_EOL;
-        $comments .= PHP_EOL . $this->getTranslatedText('cashpayment_near_you') . PHP_EOL . PHP_EOL;
 
         $strnos = 0;
         foreach($requestData as $key => $val)
         {
             if(strpos($key, 'nearest_store_title') !== false)
             {
+                if($strnos == 0) {
+                  $comments .= PHP_EOL . $this->getTranslatedText('cashpayment_near_you') . PHP_EOL . PHP_EOL;  
+                }
                 $strnos++;
             }
         }
