@@ -643,13 +643,14 @@ class PaymentHelper
         {
             if(strpos($key, 'nearest_store_title') !== false)
             {
-                if($strnos == 0) {
-                  $comments .= PHP_EOL . $this->getTranslatedText('cashpayment_near_you') . PHP_EOL . PHP_EOL;  
-                }
                 $strnos++;
             }
         }
-
+        
+        if(!empty($strnos)) {
+             $comments .= PHP_EOL . $this->getTranslatedText('cashpayment_near_you') . PHP_EOL . PHP_EOL;  
+        }
+        
         for($i = 1; $i <= $strnos; $i++)
         {
             $countryName = !empty($requestData['nearest_store_country_' . $i]) ? $requestData['nearest_store_country_' . $i] : '';
