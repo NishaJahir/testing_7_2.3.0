@@ -3,19 +3,21 @@
 <script type="text/javascript">
 
   jQuery(function () {
-  
-   console.log('New Modelllll');
-   
-      var iosDevicce = iOS(); // returns true if it's iOS
-      var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-      if(iosDevicce && isSafari) {
-        console.log('ios and dafari');
-        jQuery('li[data-id="6018"]').show();
-      } else {
-        console.log('not ios and safari');
-        jQuery('li[data-id="6018"]').hide();
+     
+      var paymentMethodId = jQuery('#nn-paymentMethodId').val();
+      var nnApplepayPayment = jQuery('#nn-paymentKey').val();
+      if(nnApplepayPayment == 'NOVALNET_APPLEPAY') {
+         var iosDevicce = iOS(); // returns true if it's iOS
+         var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+         if(iosDevicce && isSafari) {
+          console.log(paymentMethodId + 'safari');
+          jQuery("li[data-id='paymentMethodId']").show();
+         } else {
+           console.log(paymentMethodId + 'not safari');
+          jQuery("li[data-id='paymentMethodId']").hide();
+         }
       }
-    
+
     jQuery("[id^='nnReinitPaymentMethod-']").show();
     
     jQuery("[id^='nnReinitPaymentMethod-']").click(function () {
