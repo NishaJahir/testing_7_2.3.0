@@ -36,7 +36,7 @@ class NovalnetPaymentMethodReinitializePaymentScript
           if ($paymentMethod instanceof PaymentMethod) {
               $paymentMethodIds[] = $paymentMethod->id;
               if($paymentMethod->paymentKey == 'NOVALNET_APPLEPAY') {
-                 $nnPaymentMethodKey = $paymentMethod->name;
+                 $nnPaymentMethodKey = $paymentMethod->paymentKey;
                  $nnPaymentMethodId = $paymentMethod->id;
               }
           }
