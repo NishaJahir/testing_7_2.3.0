@@ -127,5 +127,6 @@ function loadNovalnetCcIframe()
       };
 
       NovalnetUtility.createCreditCardForm(requestData);
+      NovalnetUtility.setCreditCardFormHeight();
      jQuery('.loader').hide(700);
 }
