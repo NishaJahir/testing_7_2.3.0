@@ -494,6 +494,9 @@ class NovalnetServiceProvider extends ServiceProvider
         $db_details['test_mode'] = !empty($db_details['test_mode']) ? $db_details['test_mode'] : $payment_details['test_mode'];
         $db_details['payment_id'] = !empty($db_details['payment_id']) ? $db_details['payment_id'] : $payment_details['payment_id'];
             
+        $this->getLogger(__METHOD__)->error('db', $db_details);
+        $this->getLogger(__METHOD__)->error('pay', $payment_details);
+            
         $totalCallbackAmount = 0;
         foreach ($get_transaction_details as $transaction_details) {
            $totalCallbackAmount += $transaction_details->callbackAmount;
@@ -516,7 +519,7 @@ class NovalnetServiceProvider extends ServiceProvider
                  if($db_details['payment_id'] == '59' && ($transaction_details->amount > $totalCallbackAmount) && $tid_status == '100' ) {
                 $comments .= PHP_EOL . $cashpayment_comments;   
                 }
-                if($db_details['payment_id'] == '73' && $tid_status == '100') {
+                if($db_details['payment_id'] == '73' && $transaction_details->amount > $totalCallbackAmount && $tid_status == '100') {
                         $comments .= PHP_EOL . $paymentService->getMultibancoReferenceInformation($db_details);
                 }
             
