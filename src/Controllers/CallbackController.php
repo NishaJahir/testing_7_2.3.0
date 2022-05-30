@@ -313,7 +313,7 @@ class CallbackController extends Controller
             }
             if($this->getPaymentTypeLevel() == 2 && $this->aryCaptureParams['tid_status'] == '100')
             {
-                $nnTransactionHistory->additionalInfo = ['type' => 'credit', 'tid_status' => $this->aryCaptureParams['tid_status'], 'system_version' => NovalnetConstants::PLUGIN_VERSION];
+                $nnTransactionHistory->additionalInfo = ['type' => 'credit', 'tid_status' => $this->aryCaptureParams['tid_status'], 'product_id' => $this->aryCaptureParams['product_id'], 'system_version' => NovalnetConstants::PLUGIN_VERSION];
                 
                 //  Check if the debit happen in previously for online transfer
                 $createPaymentEntry = true;
