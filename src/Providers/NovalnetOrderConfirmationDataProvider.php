@@ -85,9 +85,7 @@ class NovalnetOrderConfirmationDataProvider
                     $comment = '';
                     $db_details = $paymentService->getDatabaseValues($orderId);
                     $get_transaction_details = $database->query(TransactionLog::class)->where('orderNo', '=', $orderId)->get();
-                    if (in_array($payment->method['paymentKey'], ['NOVALNET_INVOICE', 'NOVALNET_PREPAYMENT', 'NOVALNET_CASHPAYMENT'])) {
-                    $get_transaction_details = $database->query(TransactionLog::class)->where('orderNo', '=', $orderId)->whereIn('paymentName', ['novalnet_invoice', 'novalnet_prepayment', 'novalnet_cashpayment'])->get();  
-                    }
+                    
                     $payment_details = json_decode($get_transaction_details[0]->additionalInfo, true);
                     $db_details['test_mode'] = !empty($db_details['test_mode']) ? $db_details['test_mode'] : $payment_details['test_mode'];
                     $db_details['payment_id'] = !empty($db_details['payment_id']) ? $db_details['payment_id'] : $payment_details['payment_id'];
