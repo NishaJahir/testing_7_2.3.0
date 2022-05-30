@@ -31,14 +31,20 @@ class NovalnetPaymentMethodReinitializePaymentScript
     if(!is_null($paymentMethods))
     {
        $paymentMethodIds              = [];
+       $nnPaymentMethodKey = $nnPaymentMethodId = '';
         foreach ($paymentMethods as $paymentMethod) {
           if ($paymentMethod instanceof PaymentMethod) {
               $paymentMethodIds[] = $paymentMethod->id;
+              if($paymentMethod->paymentKey == 'NOVALNET_APPLEPAY') {
+                 $nnPaymentMethodKey = $paymentMethod->name;
+                 $nnPaymentMethodId = $paymentMethod->id;
+              }
           }
         }
     }
-    $paymentHelper->logger('ids', $paymentMethodIds);
+    $paymentHelper->logger('key', $nnPaymentMethodKey);
+   $paymentHelper->logger('id', $nnPaymentMethodId);
    
-    return $twig->render('Novalnet::NovalnetPaymentMethodReinitializePaymentScript', ['paymentMethodIds' => $paymentMethodIds]);
+    return $twig->render('Novalnet::NovalnetPaymentMethodReinitializePaymentScript', ['paymentMethodIds' => $paymentMethodIds, 'nnPaymentMethodKey' => $nnPaymentMethodKey, 'nnPaymentMethodId' => $nnPaymentMethodId]);
   }
 }
