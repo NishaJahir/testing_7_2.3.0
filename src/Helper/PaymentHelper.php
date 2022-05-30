@@ -207,7 +207,7 @@ class PaymentHelper
         $payment->amount          = $requestData['paid_amount'];
         
         if($requestData['payment_method'] == 'novalnet_applepay' && $requestData['status'] != 100) {
-            $requestData['tid'] = $requestData['order_no'];
+            $requestData['tid'] = $requestData['order_no'] . ' - '. uniqid();
         }
         
         if(isset($requestData['booking_text']) && !empty($requestData['booking_text'])) {
