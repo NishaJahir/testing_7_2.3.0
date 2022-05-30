@@ -13,10 +13,10 @@
          var iosDevicce = iOS(); // returns true if it's iOS
          var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
          if(iosDevicce && isSafari) {
-          jQuery('li[data-id="nnPaymentMethodId"]').show();
+          jQuery('li[data-id="'+nnPaymentMethodId+'"]').show();
            console.log(nnPaymentMethodId + 'safari');
          } else {
-          jQuery('li[data-id="nnPaymentMethodId"]').hide();
+          jQuery('li[data-id="'+nnPaymentMethodId+'"]').hide();
             console.log('li[data-id="nnPaymentMethodId"]');          
          }
       }
