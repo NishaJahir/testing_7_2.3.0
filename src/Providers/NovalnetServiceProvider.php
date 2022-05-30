@@ -490,6 +490,10 @@ class NovalnetServiceProvider extends ServiceProvider
         $paymentKey = $paymentHelper->getPaymentKeyByMop($payments[0]->mopId);
         $db_details = $paymentService->getDatabaseValues($order->id);
         $get_transaction_details = $transactionLogData->getTransactionData('orderNo', $order->id);
+        $payment_details = json_decode($get_transaction_details[0]->additionalInfo, true);
+        $db_details['test_mode'] = !empty($db_details['test_mode']) ? $db_details['test_mode'] : $payment_details['test_mode'];
+        $db_details['payment_id'] = !empty($db_details['payment_id']) ? $db_details['payment_id'] : $payment_details['payment_id'];
+            
         $totalCallbackAmount = 0;
         foreach ($get_transaction_details as $transaction_details) {
            $totalCallbackAmount += $transaction_details->callbackAmount;
@@ -498,8 +502,6 @@ class NovalnetServiceProvider extends ServiceProvider
         ) {
              
         try {
-                
-            
                 $comments = '';
                 $comments .= PHP_EOL . $paymentHelper->getTranslatedText('nn_tid') . $db_details['tid'];
                 if(!empty($db_details['test_mode'])) {
