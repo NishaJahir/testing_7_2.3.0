@@ -491,10 +491,10 @@ class NovalnetServiceProvider extends ServiceProvider
         $db_details = $paymentService->getDatabaseValues($order->id);
         $get_transaction_details = $transactionLogData->getTransactionData('orderNo', $order->id);
         $payment_details = json_decode($get_transaction_details[0]->additionalInfo, true);
-        //$db_details['test_mode'] = !empty($db_details['test_mode']) ? $db_details['test_mode'] : $payment_details['test_mode'];
-        //$db_details['payment_id'] = !empty($db_details['payment_id']) ? $db_details['payment_id'] : $payment_details['payment_id'];
+        $db_details['test_mode'] = !empty($db_details['test_mode']) ? $db_details['test_mode'] : $payment_details['test_mode'];
+        $db_details['payment_id'] = !empty($db_details['payment_id']) ? $db_details['payment_id'] : $payment_details['payment_id'];
             
-        $this->getLogger(__METHOD__)->error('db123', $db_details);
+        $this->getLogger(__METHOD__)->error('db12345', $db_details);
 
             
         $totalCallbackAmount = 0;
