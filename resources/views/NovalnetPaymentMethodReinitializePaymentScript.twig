@@ -5,7 +5,9 @@
   jQuery(function () {
      
       var paymentMethodId = jQuery('#nn-paymentMethodId').val();
+      console.log(paymentMethodId);
       var nnApplepayPayment = jQuery('#nn-paymentKey').val();
+            console.log(nnApplepayPayment);
       if(nnApplepayPayment == 'NOVALNET_APPLEPAY') {
          var iosDevicce = iOS(); // returns true if it's iOS
          var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
