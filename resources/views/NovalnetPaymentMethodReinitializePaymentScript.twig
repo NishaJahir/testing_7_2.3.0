@@ -1,27 +1,26 @@
 <input type="hidden" name="nn_mop_id" id="nn_mop_id" value="{{paymentMethodIds}}">
+<input type="hidden" name="nn_paymentmethod_key" id="nn_paymentmethod_key" value="{{nnPaymentMethodKey}}">
+<input type="hidden" name="nn_paymentmethod_id" id="nn_paymentmethod_id" value="{{nnPaymentMethodId}}">
 
 <script type="text/javascript">
 
   jQuery(function () {
      
-      var paymentMethodId = jQuery('#nn-paymentMethodId').val();
-      var paymentMethodIds = jQuery('#nn_mop_id').val();
-      for(let paymentMethodId in paymentMethodIds) {
-        console.log(paymentMethodId);
-      }
+      var nnPaymentMethodId = jQuery('#nn_paymentmethod_id').val();
+      var nnPaymentMethodKey = jQuery('#nn_paymentmethod_key').val();
       
-
-      var nnApplepayPayment = jQuery('#nn-paymentKey').val();
-            console.log(nnApplepayPayment);
-      if(nnApplepayPayment == 'NOVALNET_APPLEPAY') {
+console.log(paymentMethodKey);
+            console.log(paymentMethodId);
+            
+      if(nnPaymentMethodKey == 'NOVALNET_APPLEPAY') {
          var iosDevicce = iOS(); // returns true if it's iOS
          var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
          if(iosDevicce && isSafari) {
-          console.log(paymentMethodId + 'safari');
-          jQuery("li[data-id='paymentMethodId']").show();
+          console.log(nnPaymentMethodId + 'safari');
+          jQuery("li[data-id='nnPaymentMethodKey']").show();
          } else {
-           console.log(paymentMethodId + 'not safari');
-          jQuery("li[data-id='paymentMethodId']").hide();
+           console.log(nnPaymentMethodId + 'not safari');
+          jQuery("li[data-id='nnPaymentMethodKey']").hide();
          }
       }
 
