@@ -8,19 +8,16 @@
      
       var nnPaymentMethodId = jQuery('#nn_paymentmethod_id').val();
       var nnPaymentMethodKey = jQuery('#nn_paymentmethod_key').val();
-      
-console.log(nnPaymentMethodId);
-            console.log(nnPaymentMethodKey);
             
       if(nnPaymentMethodKey == 'NOVALNET_APPLEPAY') {
          var iosDevicce = iOS(); // returns true if it's iOS
          var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
          if(iosDevicce && isSafari) {
           console.log(nnPaymentMethodId + 'safari');
-          jQuery("li[data-id='nnPaymentMethodKey']").show();
+          jQuery("li[data-id='nnPaymentMethodId']").show();
          } else {
            console.log(nnPaymentMethodId + 'not safari');
-          jQuery("li[data-id='nnPaymentMethodKey']").hide();
+          jQuery("li[data-id='nnPaymentMethodId']").hide();
          }
       }
 
