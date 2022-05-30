@@ -691,7 +691,7 @@ class PaymentService
             'NOVALNET_GIROPAY'=>'69',
             'NOVALNET_PRZELEWY'=>'78',
             'NOVALNET_SOFORT'=>'33',
-            'NOVALNET_APPLEPAY'=>'102',
+            'NOVALNET_APPLEPAY'=>'103',
             'NOVALNET_POSTFINANCE_CARD'=>'87',
             'NOVALNET_POSTFINANCE_EFINANCE'=>'88',
             'NOVALNET_BANCONTACT'=>'44'
