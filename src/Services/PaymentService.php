@@ -310,6 +310,7 @@ class PaymentService
         $testModeKey = 'Novalnet.' . $paymentKeyLower . '_test_mode';
         $this->getLogger(__METHOD__)->error('payment key test mode', $testModeKey);
         
+        
         $paymentRequestData = [
             'vendor'             => $this->paymentHelper->getNovalnetConfig('novalnet_vendor_id'),
             'auth_code'          => $this->paymentHelper->getNovalnetConfig('novalnet_auth_code'),
@@ -360,6 +361,8 @@ class PaymentService
         if($paymentRequestData['key'] == '102') {
             $this->getSeamlessFormParams($paymentRequestData);
         }
+        
+        $this->getLogger(__METHOD__)->error('payment request', $paymentRequestData);
         
         $url = $this->getPaymentData($paymentKey, $paymentRequestData, $doRedirect);
         return [
