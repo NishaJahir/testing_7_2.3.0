@@ -358,7 +358,7 @@ class PaymentService
             $paymentRequestData['tel'] = $address->phone;
         }
         
-        if($paymentRequestData['key'] == '102') {
+        if($paymentRequestData['key'] == '103') {
             $this->getSeamlessFormParams($paymentRequestData);
         }
         
