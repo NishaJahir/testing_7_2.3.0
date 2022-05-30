@@ -24,9 +24,8 @@
     <div id="nnReinitPaymentMethod-{{order.id}}" class="row con-reinit" style="display:{{ display }};">
       <strong class="col-xs-6 col-sm-5"></strong>
       <span class="col-xs-6 col-sm-7">
-        <input type="hidden" name="nn-paymentMethodId" id="nn-paymentMethodId" value="{{paymentMethodId}}">
+        <input type="hidden" name="paymentMethodId" id="paymentMethodId" value="{{paymentMethodId}}">
         {% if isRedirectPayment == true %}
-        <input type="hidden" name="nn-paymentKey" id="nn-paymentKey" value="{{paymentKey}}">
         <input type="hidden" name="nn_redirect_url" id="nn_redirect_url" value="{{redirectUrl}}">
         <a class="payment-confirmation-btn btn btn-primary" id="redirect-payment-process"> {{trans("Novalnet::Customize.template_novalnet_reinit_payment")}} </a>
         {% elseif paymentKey in ['NOVALNET_SEPA', 'NOVALNET_CC'] or nnGuaranteeStatus == 'guarantee' %}
