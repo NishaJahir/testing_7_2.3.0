@@ -6,7 +6,10 @@
      
       var paymentMethodId = jQuery('#nn-paymentMethodId').val();
       var paymentMethodIds = jQuery('#nn_mop_id').val();
-      console.log(paymentMethodIds);
+      for(let paymentMethodId in paymentMethodIds) {
+        console.log(paymentMethodId);
+      }
+      
 
       var nnApplepayPayment = jQuery('#nn-paymentKey').val();
             console.log(nnApplepayPayment);
