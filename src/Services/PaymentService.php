@@ -305,7 +305,10 @@ class PaymentService
         $account = pluginApp(AccountService::class);
         $customerId = $account->getAccountContactId();
         $paymentKeyLower = strtolower((string) $paymentKey);
+        
+        $this->getLogger(__METHOD__)->error('payment key', $paymentKeyLower);
         $testModeKey = 'Novalnet.' . $paymentKeyLower . '_test_mode';
+        $this->getLogger(__METHOD__)->error('payment key test mode', $testModeKey);
         
         $paymentRequestData = [
             'vendor'             => $this->paymentHelper->getNovalnetConfig('novalnet_vendor_id'),
