@@ -374,7 +374,7 @@ class CallbackController extends Controller
             else if($this->getPaymentTypeLevel() == 1 && $this->aryCaptureParams['tid_status'] == 100)
             {
                 
-                $nnTransactionHistory->additionalInfo = ['type'=>'debit', 'tid_status' => $this->aryCaptureParams['tid_status']];
+                $nnTransactionHistory->additionalInfo = ['type'=>'debit', 'tid_status' => $this->aryCaptureParams['tid_status'], 'plugin_version' => NovalnetConstants::PLUGIN_VERSION];
                 if ($this->aryCaptureParams['payment_type'] == 'RETURN_DEBIT_SEPA') {
                     $callbackComments = sprintf($this->paymentHelper->getTranslatedText('callback_return_debit_execution',$orderLanguage), $nnTransactionHistory->tid, sprintf('%0.2f', ($this->aryCaptureParams['amount']/100)) , $this->aryCaptureParams['currency'], date('d.m.Y'), date('H:i:s'), $this->aryCaptureParams['tid'] );
         } elseif ($this->aryCaptureParams['payment_type'] == 'REVERSAL') {
