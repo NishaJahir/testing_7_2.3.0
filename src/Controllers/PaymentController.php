@@ -221,9 +221,9 @@ class PaymentController extends Controller
                 $guranteeStatus = $this->paymentService->getGuaranteeStatus($this->basketRepository->load(), $requestData['paymentKey'], $orderAmount, $billingAddressId, $shippingAddressId);
             }
             
-            if($guaranteeStatus != 'normal' && $guaranteeStatus != 'guarantee')
+            if($guranteeStatus != 'normal' && $guranteeStatus != 'guarantee')
             {
-                $notificationMessage = $this->paymentHelper->getTranslatedText($guaranteeStatus);
+                $notificationMessage = $this->paymentHelper->getTranslatedText($guranteeStatus);
                 $this->paymentService->pushNotification($notificationMessage, 'error', 100);
                 return $this->response->redirectTo(strtolower($serverRequestData['data']['lang']) . '/confirmation');
             }
