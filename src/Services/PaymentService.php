@@ -87,7 +87,7 @@ class PaymentService
      */
     private $transactionLogData;
     
-    private $redirectPayment = ['NOVALNET_SOFORT', 'NOVALNET_PAYPAL', 'NOVALNET_IDEAL', 'NOVALNET_EPS', 'NOVALNET_GIROPAY', 'NOVALNET_PRZELEWY', 'NOVALNET_APPLEPAY', 'NOVALNET_POSTFINANCE_CARD', 'NOVALNET_POSTFINANCE_EFINANCE', 'NOVALNET_BANCONTACT'];
+    private $redirectPayment = ['NOVALNET_SOFORT', 'NOVALNET_PAYPAL', 'NOVALNET_IDEAL', 'NOVALNET_EPS', 'NOVALNET_GIROPAY', 'NOVALNET_PRZELEWY', 'NOVALNET_APPLEPAY', 'NOVALNET_POSTFINANCE_CARD', 'NOVALNET_POSTFINANCE_EFINANCE', 'NOVALNET_BANCONTACT', 'NOVALNET_ONLINE_BANK_TRANSFER'];
 
     /**
      * Constructor.
@@ -648,7 +648,8 @@ class PaymentService
             'NOVALNET_APPLEPAY'=>NovalnetConstants::PAYGATE_URL,
             'NOVALNET_POSTFINANCE_CARD'=>NovalnetConstants::POSTFINANCE_PAYMENT_URL,
             'NOVALNET_POSTFINANCE_EFINANCE'=>NovalnetConstants::POSTFINANCE_PAYMENT_URL,
-            'NOVALNET_BANCONTACT'=>NovalnetConstants::BANCONTACT_PAYMENT_URL, 
+            'NOVALNET_BANCONTACT'=>NovalnetConstants::BANCONTACT_PAYMENT_URL,
+            'NOVALNET_ONLINE_BANK_TRANSFER'=>NovalnetConstants::ONLINE_BANK_TRANSFER_PAYMENT_URL
         ];
 
         return $payment[$paymentKey];
@@ -695,7 +696,8 @@ class PaymentService
             'NOVALNET_APPLEPAY'=>'102',
             'NOVALNET_POSTFINANCE_CARD'=>'87',
             'NOVALNET_POSTFINANCE_EFINANCE'=>'88',
-            'NOVALNET_BANCONTACT'=>'44'
+            'NOVALNET_BANCONTACT'=>'44',
+            'NOVALNET_ONLINE_BANK_TRANSFER'=>'113'
         ];
 
         return $payment[$paymentKey];
@@ -725,7 +727,8 @@ class PaymentService
             'NOVALNET_APPLEPAY'=>'APPLEPAY',
             'NOVALNET_POSTFINANCE_CARD'=>'POSTFINANCE_CARD',
             'NOVALNET_POSTFINANCE_EFINANCE'=>'POSTFINANCE',
-            'NOVALNET_BANCONTACT'=>'BANCONTACT'
+            'NOVALNET_BANCONTACT'=>'BANCONTACT',
+            'NOVALNET_ONLINE_BANK_TRANSFER'=>'ONLINE_BANK_TRANSFER'
         ];
 
         return $payment[$paymentKey];
