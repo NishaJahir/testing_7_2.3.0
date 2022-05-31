@@ -40,13 +40,15 @@
   <div class="modal" tabindex="-1" role="dialog" id="novalnetPaymentForm">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      {% if paymentKey == 'NOVALNET_INVOICE' %}
-      {% include "Novalnet::PaymentForm.NOVALNET_INVOICE" %}
-      {% elseif paymentKey == 'NOVALNET_SEPA' %}
-      {% include "Novalnet::PaymentForm.NOVALNET_SEPA" %}
-      {% elseif paymentKey == 'NOVALNET_CC' %}
-      {% include "Novalnet::PaymentForm.NOVALNET_CC" %}
-      {% endif %}
+      <div class="modal-body">
+        {% if paymentKey == 'NOVALNET_INVOICE' %}
+        {% include "Novalnet::PaymentForm.NOVALNET_INVOICE" %}
+        {% elseif paymentKey == 'NOVALNET_SEPA' %}
+        {% include "Novalnet::PaymentForm.NOVALNET_SEPA" %}
+        {% elseif paymentKey == 'NOVALNET_CC' %}
+        {% include "Novalnet::PaymentForm.NOVALNET_CC" %}
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>
