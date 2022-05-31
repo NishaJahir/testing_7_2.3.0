@@ -1221,6 +1221,61 @@
                }
             }
          }
+      },
+      "Config.NovalnetOnlineBankTransferTab":{  
+         "label":"Config.NovalnetOnlineBankTransferTab",
+         "formFields":{  
+            "novalnet_online_bank_transfer_payment_active":{  
+               "type":"checkBox",
+               "required":false,
+               "label":"Config.paymentActiveLabel",
+               "options":{  
+                  "defaultValue":false
+               }
+            },
+            "novalnet_online_bank_transfer_test_mode":{  
+               "type":"checkBox",
+               "required":false,
+               "label":"Config.testModeLabel",
+               "options":{ 
+                  "defaultValue":false
+               }
+            },
+            "novalnet_online_bank_transfer_payment_logo":{  
+               "type":"inputFile",
+               "required":false,
+               "label":"Config.paymentLogoLabel",
+               "options":{  
+                  "defaultValue":"images/banktransfer.png"
+               }
+            },
+            "novalnet_online_bank_transfer_minimum_order_amount":{  
+               "type":"inputText",
+               "required":false,
+               "label":"Config.minimumOrderAmountLabel",
+               "options":{  
+                  "tooltip":"Config.minimumOrderAmountTooltip",
+                  "defaultValue":""
+               }
+            },
+            "novalnet_online_bank_transfer_maximum_order_amount":{  
+               "type":"inputText",
+               "required":false,
+               "label":"Config.maximumOrderAmountLabel",
+               "options":{  
+                  "tooltip":"Config.maximumOrderAmountTooltip",
+                  "defaultValue":""
+               }
+            },
+            "novalnet_online_bank_transfer_allowed_country":{  
+               "type":"inputText",
+               "required":false,
+               "label":"Config.allowedCountryLabel",
+               "options":{  
+                  "defaultValue":""
+               }
+            }
+         }
       }
    }
 }
