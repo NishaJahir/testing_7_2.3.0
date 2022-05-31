@@ -1,9 +1,11 @@
 jQuery(document).ready(function () {
      if(typeof(window.NovalnetUtility) === 'undefined') {
+          console.log('Yesss');
            setTimeout(function(){
                loadNovalnetCcIframe();
           },1000);
           } else {
+               console.log('Yesss123');
              loadNovalnetCcIframe();
           }
         jQuery('#nn_cc_form').submit( function (e) {
