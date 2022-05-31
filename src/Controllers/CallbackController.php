@@ -85,7 +85,7 @@ class CallbackController extends Controller
      * @var aryPayments
      * @Array Type of payment available - Level : 0
      */
-    protected $aryPayments = ['CREDITCARD', 'INVOICE_START', 'DIRECT_DEBIT_SEPA', 'GUARANTEED_INVOICE', 'GUARANTEED_DIRECT_DEBIT_SEPA', 'PAYPAL', 'ONLINE_TRANSFER', 'IDEAL', 'GIROPAY', 'PRZELEWY24', 'EPS', 'CASHPAYMENT', 'POSTFINANCE', 'POSTFINANCE_CARD', 'APPLEPAY', 'BANCONTACT', 'MULTIBANCO'];
+    protected $aryPayments = ['CREDITCARD', 'INVOICE_START', 'DIRECT_DEBIT_SEPA', 'GUARANTEED_INVOICE', 'GUARANTEED_DIRECT_DEBIT_SEPA', 'PAYPAL', 'ONLINE_TRANSFER', 'IDEAL', 'GIROPAY', 'PRZELEWY24', 'EPS', 'CASHPAYMENT', 'POSTFINANCE', 'POSTFINANCE_CARD', 'APPLEPAY', 'BANCONTACT', 'MULTIBANCO', 'ONLINE_BANK_TRANSFER'];
 
     /**
      * @var aryChargebacks
@@ -209,6 +209,14 @@ class CallbackController extends Controller
             'novalnet_multibanco' => [
                             'MULTIBANCO',
                             'MULTIBANCO_CREDIT'
+                        ],
+            'novalnet_online_bank_transfer' => [
+                            'ONLINE_BANK_TRANSFER',
+                            'REVERSAL',
+                            'ONLINE_TRANSFER_CREDIT',
+                            'CREDIT_ENTRY_DE',
+                            'DEBT_COLLECTION_DE',
+                            'REFUND_BY_BANK_TRANSFER_EU'
                         ]
             ];
 
