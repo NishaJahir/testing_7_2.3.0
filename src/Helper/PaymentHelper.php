@@ -373,7 +373,8 @@ class PaymentHelper
             '78'  => 'novalnet_przelewy',
             '87'  => 'novalnet_postfinance_card',
             '88'  => 'novalnet_postfinance_efinance',
-            '102'  => 'novalnet_applepay'
+            '102'  => 'novalnet_applepay',
+            '113'  => 'novalnet_online_bank_transfer'
         ];
         return $paymentMethodName[$paymentKey];
     }
