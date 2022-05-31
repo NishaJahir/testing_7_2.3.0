@@ -24,11 +24,8 @@
     jQuery("[id^='nnReinitPaymentMethod-']").show();
     
     jQuery("[id^='-payment-process']").click(function () {
-      alert('called');
-      console.log('called');
       jQuery("[id^='nnReinitPaymentMethod-']").hide();
-      var height = NovalnetUtility.setCreditCardFormHeight();
-     alert(height);
+      
     });
     
     jQuery("#direct-payment-process").click(function () {
@@ -43,7 +40,10 @@
       });
   
       jQuery('#form-payment-process').click(function() {
+          jQuery("[id^='nnReinitPaymentMethod-']").hide();
           jQuery('#novalnetPaymentForm').show();
+          var height = NovalnetUtility.setCreditCardFormHeight();
+          alert(height);
       });
     
 });
