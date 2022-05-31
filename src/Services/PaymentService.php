@@ -584,11 +584,12 @@ class PaymentService
      */
     public function encodePaymentData(&$paymentRequestData)
     {
+        $this->getLogger(__METHOD__)->error('encode', $paymentRequestData);
         foreach (['auth_code', 'product', 'tariff', 'amount', 'test_mode'] as $key) {
             // Encoding payment data
             $paymentRequestData[$key] = $this->paymentHelper->encodeData($paymentRequestData[$key], $paymentRequestData['uniqid']);
         }
-
+        $this->getLogger(__METHOD__)->error('encode123', $paymentRequestData);
         // Generate hash value
         $paymentRequestData['hash'] = $this->paymentHelper->generateHash($paymentRequestData);
     }
