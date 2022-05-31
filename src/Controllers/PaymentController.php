@@ -223,8 +223,7 @@ class PaymentController extends Controller
             
             if($guranteeStatus != 'normal' && $guranteeStatus != 'guarantee')
             {
-                $notificationMessage = $this->paymentHelper->getTranslatedText($guranteeStatus);
-                $this->paymentService->pushNotification($notificationMessage, 'error', 100);
+                $this->paymentService->pushNotification($guranteeStatus, 'error', 100);
                 return $this->response->redirectTo(strtolower($serverRequestData['data']['lang']) . '/confirmation');
             }
             
