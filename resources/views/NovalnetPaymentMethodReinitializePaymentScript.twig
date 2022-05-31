@@ -40,7 +40,10 @@
       jQuery('#form-payment-process').click(function() {
           jQuery("[id^='nnReinitPaymentMethod-']").hide();
           jQuery('#novalnetPaymentForm').show();
-          //var height = NovalnetUtility.setCreditCardFormHeight();
+          var nnPaymentMethodKey = jQuery('#paymentMethodKey').val();
+          if(nnPaymentMethodKey == 'NOVALNET_CC') {
+             NovalnetUtility.setCreditCardFormHeight();
+          }
       });
     
 });
