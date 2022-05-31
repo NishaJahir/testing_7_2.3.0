@@ -1246,7 +1246,7 @@
                "required":false,
                "label":"Config.paymentLogoLabel",
                "options":{  
-                  "defaultValue":"images/banktransfer.png"
+                  "defaultValue":"images/onlinebanktransfer.png"
                }
             },
             "novalnet_online_bank_transfer_minimum_order_amount":{  
