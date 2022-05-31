@@ -24,6 +24,8 @@
     jQuery("[id^='nnReinitPaymentMethod-']").show();
     
     jQuery("[id^='-payment-process']").click(function () {
+      alert('called');
+      console.log('called');
       jQuery("[id^='nnReinitPaymentMethod-']").hide();
       var height = NovalnetUtility.setCreditCardFormHeight();
      alert(height);
