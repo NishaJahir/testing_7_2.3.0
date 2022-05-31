@@ -221,6 +221,13 @@ class PaymentController extends Controller
                 $guranteeStatus = $this->paymentService->getGuaranteeStatus($this->basketRepository->load(), $requestData['paymentKey'], $orderAmount, $billingAddressId, $shippingAddressId);
             }
             
+            if($guaranteeStatus != 'normal' && $guaranteeStatus != 'guarantee')
+            {
+                $notificationMessage = $this->paymentHelper->getTranslatedText($guaranteeStatus);
+                $this->paymentService->pushNotification($notificationMessage, 'error', 100);
+                return $this->response->redirectTo(strtolower($serverRequestData['data']['lang']) . '/confirmation');
+            }
+            
             if('guarantee' == $guranteeStatus)
             {    
                 $birthday = sprintf('%4d-%02d-%02d',$requestData['nn_guarantee_year'],$requestData['nn_guarantee_month'],$requestData['nn_guarantee_date']);
