@@ -99,7 +99,7 @@ class NovalnetOrderConfirmationDataProvider
                     }
                     
                     // Display error message in the confirmation page
-                    if(!empty($tid_status) && !in_array($tid_status, [75, 83, 85, 86, 90, 91, 98, 99, 100]) && !empty($db_details['tx_status_msg'])) {
+                    if(!empty($tid_status) && !in_array($tid_status, [75, 83, 85, 86, 90, 91, 98, 99, 100, 103]) && !empty($db_details['tx_status_msg'])) {
                         $comments .= PHP_EOL . $db_details['tx_status_msg'];
                     }
                     
