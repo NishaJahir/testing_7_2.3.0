@@ -42,22 +42,24 @@ use Novalnet\Models\TransactionLog;
 use Plenty\Modules\Document\Models\Document;
 use Novalnet\Constants\NovalnetConstants;
 
-use Novalnet\Methods\NovalnetCcPaymentMethod;
+
 use Novalnet\Methods\NovalnetSepaPaymentMethod;
+use Novalnet\Methods\NovalnetCcPaymentMethod;
+use Novalnet\Methods\NovalnetApplePayPaymentMethod;
 use Novalnet\Methods\NovalnetInvoicePaymentMethod;
 use Novalnet\Methods\NovalnetPrepaymentPaymentMethod;
-use Novalnet\Methods\NovalnetCashPaymentMethod;
-use Novalnet\Methods\NovalnetSofortPaymentMethod;
-use Novalnet\Methods\NovalnetPaypalPaymentMethod;
 use Novalnet\Methods\NovalnetIdealPaymentMethod;
-use Novalnet\Methods\NovalnetEpsPaymentMethod;
+use Novalnet\Methods\NovalnetSofortPaymentMethod;
 use Novalnet\Methods\NovalnetGiropayPaymentMethod;
+use Novalnet\Methods\NovalnetCashPaymentMethod;
 use Novalnet\Methods\NovalnetPrzelewyPaymentMethod;
-use Novalnet\Methods\NovalnetApplePayPaymentMethod;
+use Novalnet\Methods\NovalnetEpsPaymentMethod;
+use Novalnet\Methods\NovalnetPaypalPaymentMethod;
 use Novalnet\Methods\NovalnetPostfinanceCardPaymentMethod;
 use Novalnet\Methods\NovalnetPostfinanceEfinancePaymentMethod;
 use Novalnet\Methods\NovalnetBancontactPaymentMethod;
 use Novalnet\Methods\NovalnetMultibancoPaymentMethod;
+use Novalnet\Methods\NovalnetOnlineBankTransferPaymentMethod;
 
 use Plenty\Modules\EventProcedures\Services\Entries\ProcedureEntry;
 use Plenty\Modules\EventProcedures\Services\EventProceduresService;
@@ -110,13 +112,19 @@ class NovalnetServiceProvider extends ServiceProvider
     {
 
         // Register the Novalnet payment methods in the payment method container
+        $payContainer->register('plenty_novalnet::NOVALNET_SEPA', NovalnetSepaPaymentMethod::class,
+            [
+                AfterBasketChanged::class,
+                AfterBasketItemAdd::class,
+                AfterBasketCreate::class
+            ]);
         $payContainer->register('plenty_novalnet::NOVALNET_CC', NovalnetCcPaymentMethod::class,
             [
                 AfterBasketChanged::class,
                 AfterBasketItemAdd::class,
                 AfterBasketCreate::class
             ]);
-        $payContainer->register('plenty_novalnet::NOVALNET_SEPA', NovalnetSepaPaymentMethod::class,
+        $payContainer->register('plenty_novalnet::NOVALNET_APPLEPAY', NovalnetApplePayPaymentMethod::class,
             [
                 AfterBasketChanged::class,
                 AfterBasketItemAdd::class,
@@ -134,7 +142,7 @@ class NovalnetServiceProvider extends ServiceProvider
                 AfterBasketItemAdd::class,
                 AfterBasketCreate::class
             ]);
-        $payContainer->register('plenty_novalnet::NOVALNET_CASHPAYMENT', NovalnetCashPaymentMethod::class,
+        $payContainer->register('plenty_novalnet::NOVALNET_IDEAL', NovalnetIdealPaymentMethod::class,
             [
                 AfterBasketChanged::class,
                 AfterBasketItemAdd::class,
@@ -146,25 +154,13 @@ class NovalnetServiceProvider extends ServiceProvider
                 AfterBasketItemAdd::class,
                 AfterBasketCreate::class
             ]);
-        $payContainer->register('plenty_novalnet::NOVALNET_PAYPAL', NovalnetPaypalPaymentMethod::class,
-            [
-                AfterBasketChanged::class,
-                AfterBasketItemAdd::class,
-                AfterBasketCreate::class
-            ]);
-        $payContainer->register('plenty_novalnet::NOVALNET_IDEAL', NovalnetIdealPaymentMethod::class,
-            [
-                AfterBasketChanged::class,
-                AfterBasketItemAdd::class,
-                AfterBasketCreate::class
-            ]);
-        $payContainer->register('plenty_novalnet::NOVALNET_EPS', NovalnetEpsPaymentMethod::class,
-            [
-                AfterBasketChanged::class,
-                AfterBasketItemAdd::class,
-                AfterBasketCreate::class
-            ]);
         $payContainer->register('plenty_novalnet::NOVALNET_GIROPAY', NovalnetGiropayPaymentMethod::class,
+            [
+                AfterBasketChanged::class,
+                AfterBasketItemAdd::class,
+                AfterBasketCreate::class
+            ]);
+        $payContainer->register('plenty_novalnet::NOVALNET_CASHPAYMENT', NovalnetCashPaymentMethod::class,
             [
                 AfterBasketChanged::class,
                 AfterBasketItemAdd::class,
@@ -176,7 +172,13 @@ class NovalnetServiceProvider extends ServiceProvider
                 AfterBasketItemAdd::class,
                 AfterBasketCreate::class
             ]);
-        $payContainer->register('plenty_novalnet::NOVALNET_APPLEPAY', NovalnetApplePayPaymentMethod::class,
+        $payContainer->register('plenty_novalnet::NOVALNET_EPS', NovalnetEpsPaymentMethod::class,
+            [
+                AfterBasketChanged::class,
+                AfterBasketItemAdd::class,
+                AfterBasketCreate::class
+            ]);
+        $payContainer->register('plenty_novalnet::NOVALNET_PAYPAL', NovalnetPaypalPaymentMethod::class,
             [
                 AfterBasketChanged::class,
                 AfterBasketItemAdd::class,
@@ -206,6 +208,13 @@ class NovalnetServiceProvider extends ServiceProvider
                 AfterBasketItemAdd::class,
                 AfterBasketCreate::class
             ]);
+        $payContainer->register('plenty_novalnet::NOVALNET_ONLINE_BANK_TRANSFER', NovalnetOnlineBankTransferPaymentMethod::class,
+            [
+                AfterBasketChanged::class,
+                AfterBasketItemAdd::class,
+                AfterBasketCreate::class
+            ]);
+        
             
         // Event for Onhold - Capture Process
         $captureProcedureTitle = [
