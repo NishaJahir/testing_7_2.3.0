@@ -340,7 +340,7 @@ class CallbackController extends Controller
                 // Credit entry for the payment types Invoice, Prepayment and Cashpayment.
                 if(in_array($this->aryCaptureParams['payment_type'], ['INVOICE_CREDIT', 'CASHPAYMENT_CREDIT', 'MULTIBANCO_CREDIT']) || ($this->aryCaptureParams['payment_type'] == 'ONLINE_TRANSFER_CREDIT' && $createPaymentEntry) )
                 {
-                        if ($nnTransactionHistory->order_paid_amount < $nnTransactionHistory->order_total_amount || ($this->aryCaptureParams['payment_type'] == 'ONLINE_TRANSFER_CREDIT' && $createPaymentEntry))
+                        if ($nnTransactionHistory->order_paid_amount < $nnTransactionHistory->order_total_amount || ($this->aryCaptureParams['payment_type'] == 'ONLINE_TRANSFER_CREDIT' && $createPaymentEntry && ($nnTransactionHistory->order_paid_amount < $nnTransactionHistory->order_total_amount) ))
                         {
                         
                             $callbackComments = sprintf($this->paymentHelper->getTranslatedText('callback_initial_execution',$orderLanguage), $this->aryCaptureParams['shop_tid'], sprintf('%0.2f', ($this->aryCaptureParams['amount']/100)), $this->aryCaptureParams['currency'], date('d.m.Y'), date('H:i:s'), $this->aryCaptureParams['tid'] ).'</br>';
